@@ -1,0 +1,5 @@
+[
+  {"name": "Customer API", "status": "operational"},
+  {"name": "Reports", "status": "maintenance"},
+  {"name": "Webhook delivery", "status": "degraded"}
+]
