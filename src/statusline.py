@@ -5,7 +5,12 @@ import sys
 
 def normalize_status(value):
     normalized = str(value).strip().lower()
-    return {"operational": "operational", "degraded": "degraded", "outage": "outage"}.get(normalized, "unknown")
+    return {
+        "operational": "operational",
+        "degraded": "degraded",
+        "outage": "outage",
+        "maintenance": "degraded",
+    }.get(normalized, "unknown")
 
 def summarize(services):
     return [{"name": service["name"], "status": normalize_status(service.get("status", ""))} for service in services]

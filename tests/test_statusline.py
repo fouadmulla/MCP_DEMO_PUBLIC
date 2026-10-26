@@ -13,6 +13,11 @@ class StatusTests(unittest.TestCase):
     def test_case_and_spaces(self):
         self.assertEqual(normalize_status(" OPERATIONAL "), "operational")
 
+    def test_maintenance_maps_to_degraded(self):
+        self.assertEqual(normalize_status("maintenance"), "degraded")
+        self.assertEqual(normalize_status(" Maintenance "), "degraded")
+        self.assertEqual(normalize_status("MAINTENANCE"), "degraded")
+
     def test_unknown_is_not_healthy(self):
         self.assertEqual(normalize_status("banana"), "unknown")
         self.assertEqual(summarize([{"name": "API"}]), [{"name": "API", "status": "unknown"}])
